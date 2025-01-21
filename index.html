@@ -6,63 +6,54 @@
     <title>Document</title>
     <style>
         *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body{
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    /* height: 100vh; */
-}
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333;
+            gap: 50px;
+            flex-direction: column;
+        }
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f1f1f1;
-    gap: 50px;
-    flex-direction: column;
-}
+        .stopwatch{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px 90px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: larger;
+        }
 
-.stopwatch{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    padding: 20px 90px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: larger;
-}
+        .start{
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
 
-.start{
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-}
+        .stop{
+            background-color: #f44336;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
 
-.stop{
-    background-color: #f44336;
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.reset{
-    background-color: #2196F3;
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
+        .reset{
+            background-color: #2196F3;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="stopwatch" id="stopwatch">00:00:00</div>
@@ -72,33 +63,33 @@ body{
             <button class="reset" onclick="reset()">Reset</button>
         </div>
     </div>
+
     <script>
         let timer;
-let seconds = 0;
-const stopwatch = document.getElementById('stopwatch');
+        let seconds = 0;
 
-function updateTime(){
-    stopwatch.textContent = new Date(seconds * 1000).toISOString().substr(11, 8);
-}
+        const stopwatch = document.getElementById('stopwatch');
 
-function start(){
-    timer = setInterval(() => {
-        seconds++;
-        updateTime();
-    }, 100);
-}
+        function updateTime(){
+            stopwatch.textContent = new Date(seconds * 1000).toISOString().substr(11, 8);
+        }
 
-function stop(){
-    clearInterval(timer);
-}
+        function start(){
+            timer = setInterval(() => {
+                seconds++;
+                updateTime();
+            }, 100);
+        }
 
-function reset(){
-    clearInterval(timer);
-    seconds = 0;
-    updateTime();
-}
+        function stop(){
+            clearInterval(timer);
+        }
 
-
+        function reset(){
+            clearInterval(timer);
+            seconds = 0;
+            updateTime();
+        }
     </script>
 </body>
 </html>
